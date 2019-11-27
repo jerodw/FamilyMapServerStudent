@@ -25,6 +25,13 @@
             <version>5.5.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>FMSTestingObf</groupId>
+            <artifactId>FMSTestingObf</artifactId>
+            <scope>system</scope>
+            <version>1</version>
+            <systemPath>${basedir}/libs/FMSTestingObf.jar</systemPath>
+        </dependency>
     </dependencies>
 
 
