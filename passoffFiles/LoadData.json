@@ -1,0 +1,331 @@
+{
+   "users":[
+      {
+         "userName":"sheila",
+         "password":"parker",
+         "email":"sheila@parker.com",
+         "firstName":"Sheila",
+         "lastName":"Parker",
+         "gender":"f",
+         "personID":"Sheila_Parker"
+      },
+      {
+         "userName":"patrick",
+         "password":"spencer",
+         "email":"patrick@spencer.com",
+         "firstName":"Patrick",
+         "lastName":"Spencer",
+         "gender":"m",
+         "personID":"Patrick_Spencer"
+      }
+   ],
+   "persons":[
+      {
+         "firstName":"Sheila",
+         "lastName":"Parker",
+         "gender":"f",
+         "personID":"Sheila_Parker",
+         "spouseID":"Davis_Hyer",
+         "fatherID":"Blaine_McGary",
+         "motherID":"Betty_White",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Davis",
+         "lastName":"Hyer",
+         "gender":"m",
+         "personID":"Davis_Hyer",
+         "spouseID":"Sheila_Parker",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Blaine",
+         "lastName":"McGary",
+         "gender":"m",
+         "personID":"Blaine_McGary",
+         "fatherID":"Ken_Rodham",
+         "motherID":"Mrs_Rodham",
+         "spouseID":"Betty_White",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Betty",
+         "lastName":"White",
+         "gender":"f",
+         "personID":"Betty_White",
+         "fatherID":"Frank_Jones",
+         "motherID":"Mrs_Jones",
+         "spouseID":"Blaine_McGary",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Ken",
+         "lastName":"Rodham",
+         "gender":"m",
+         "personID":"Ken_Rodham",
+         "spouseID":"Mrs_Rodham",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Mrs",
+         "lastName":"Rodham",
+         "gender":"f",
+         "personID":"Mrs_Rodham",
+         "spouseID":"Ken_Rodham",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Frank",
+         "lastName":"Jones",
+         "gender":"m",
+         "personID":"Frank_Jones",
+         "spouseID":"Mrs_Jones",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Mrs",
+         "lastName":"Jones",
+         "gender":"f",
+         "personID":"Mrs_Jones",
+         "spouseID":"Frank_Jones",
+         "associatedUsername":"sheila"
+      },
+      {
+         "firstName":"Patrick",
+         "lastName":"Spencer",
+         "gender":"m",
+         "personID":"Patrick_Spencer",
+         "associatedUsername":"patrick",
+         "fatherID":"Happy_Birthday",
+         "motherID":"Golden_Boy"
+      },
+      {
+         "firstName":"Patrick",
+         "lastName":"Wilson",
+         "gender":"m",
+         "personID":"Happy_Birthday",
+         "associatedUsername":"patrick",
+         "spouseID":"Golden_Boy"
+      },
+      {
+         "firstName":"Spencer",
+         "lastName":"Seeger",
+         "gender":"f",
+         "personID":"Golden_Boy",
+         "associatedUsername":"patrick",
+         "spouseID":"Happy_Birthday"
+      }
+   ],
+   "events":[
+      {
+         "eventType":"birth",
+         "personID":"Sheila_Parker",
+         "city":"Melbourne",
+         "country":"Australia",
+         "latitude":-36.1833,
+         "longitude":144.9667,
+         "year":1970,
+         "eventID":"Sheila_Birth",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"marriage",
+         "personID":"Sheila_Parker",
+         "city":"Los Angeles",
+         "country":"United States",
+         "latitude":34.0500,
+         "longitude":-117.7500,
+         "year":2012,
+         "eventID":"Sheila_Marriage",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"completed asteroids",
+         "personID":"Sheila_Parker",
+         "city":"Qaanaaq",
+         "country":"Denmark",
+         "latitude":77.4667,
+         "longitude":-68.7667,
+         "year":2014,
+         "eventID":"Sheila_Asteroids",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"COMPLETED ASTEROIDS",
+         "personID":"Sheila_Parker",
+         "city":"Qaanaaq",
+         "country":"Denmark",
+         "latitude":74.4667,
+         "longitude":-60.7667,
+         "year":2014,
+         "eventID":"Other_Asteroids",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"death",
+         "personID":"Sheila_Parker",
+         "city":"Provo",
+         "country":"United States",
+         "latitude":40.2444,
+         "longitude":111.6608,
+         "year":2015,
+         "eventID":"Sheila_Death",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"birth",
+         "personID":"Davis_Hyer",
+         "city":"Hakodate",
+         "country":"Japan",
+         "latitude":41.7667,
+         "longitude":140.7333,
+         "year":1970,
+         "eventID":"Davis_Birth",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"birth",
+         "personID":"Blaine_McGary",
+         "city":"Bratsk",
+         "country":"Russia",
+         "latitude":56.1167,
+         "longitude":101.6000,
+         "year":1948,
+         "eventID":"Blaine_Birth",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"death",
+         "personID":"Betty_White",
+         "city":"Birmingham",
+         "country":"United Kingdom",
+         "latitude":52.4833,
+         "longitude":-0.1000,
+         "year":2017,
+         "eventID":"Betty_Death",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"Graduated from BYU",
+         "personID":"Ken_Rodham",
+         "country": "United States",
+         "city": "Provo",
+         "latitude": 40.2338,
+         "longitude": -111.6585,
+         "year":1879,
+         "eventID":"BYU_graduation",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"marriage",
+         "personID":"Ken_Rodham",
+         "country": "North Korea",
+         "city": "Wonsan",
+         "latitude": 39.15,
+         "longitude": 127.45,
+         "year":1895,
+         "eventID":"Rodham_Marriage",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"Did a backflip",
+         "personID":"Mrs_Rodham",
+         "country": "Mexico",
+         "city": "Mexicali",
+         "latitude": 32.6667,
+         "longitude": -114.5333,
+         "year":1890,
+         "eventID":"Mrs_Rodham_Backflip",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"learned Java",
+         "personID":"Mrs_Rodham",
+         "country": "Algeria",
+         "city": "Algiers",
+         "latitude": 36.7667,
+         "longitude": 3.2167,
+         "year":1890,
+         "eventID":"Mrs_Rodham_Java",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"Caught a frog",
+         "personID":"Frank_Jones",
+         "country": "Bahamas",
+         "city": "Nassau",
+         "latitude": 25.0667,
+         "longitude": -76.6667,
+         "year":1993,
+         "eventID":"Jones_Frog",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"marriage",
+         "personID":"Frank_Jones",
+         "country": "Ghana",
+         "city": "Tamale",
+         "latitude": 9.4,
+         "longitude": 0.85,
+         "year":1997,
+         "eventID":"Jones_Marriage",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"Ate Brazilian Barbecue",
+         "personID":"Mrs_Jones",
+         "country": "Brazil",
+         "city": "Curitiba",
+         "latitude": -24.5833,
+         "longitude": -48.75,
+         "year":2012,
+         "eventID":"Mrs_Jones_Barbecue",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"Learned to Surf",
+         "personID":"Mrs_Jones",
+         "country": "Australia",
+         "city": "Gold Coast",
+         "latitude": -27.9833,
+         "longitude": 153.4,
+         "year": 2000,
+         "eventID":"Mrs_Jones_Surf",
+         "associatedUsername":"sheila"
+      },
+      {
+         "eventType":"birth",
+         "personID":"Patrick_Spencer",
+         "city":"Grise Fiord",
+         "country":"Canada",
+         "latitude":76.4167,
+         "longitude":-81.1,
+         "year":2016,
+         "eventID":"Thanks_Woodfield",
+         "associatedUsername":"patrick"
+      },
+      {
+         "eventType":"marriage",
+         "personID":"Happy_Birthday",
+         "city":"Boise",
+         "country":"United States",
+         "latitude":43.6167,
+         "longitude":-115.8,
+         "year":2016,
+         "eventID":"True_Love",
+         "associatedUsername":"patrick"
+      },
+      {
+         "eventType":"marriage",
+         "personID":"Golden_Boy",
+         "city":"Boise",
+         "country":"United States",
+         "latitude":43.6167,
+         "longitude":-115.8,
+         "year":2016,
+         "eventID":"Together_Forever",
+         "associatedUsername":"patrick"
+      }
+   ]
+}
+

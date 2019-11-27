@@ -1,0 +1,306 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title> Family Map app server </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+  
+        <!-- Place favicon.ico in the root directory -->
+
+<!--        <link rel="stylesheet" href="css/normalize.css">    -->
+        <link rel="stylesheet" href="css/main.css">
+   <!--     <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
+
+        <script type="text/javascript">
+
+            function submit()
+            {
+                var handle = document.getElementById("handleBox").value;
+                var requestBody = document.getElementById("requestBox").value;
+                var authToken = document.getElementById("authToken").value;
+
+                var method = "post";
+                if(handle.includes("person") || handle.includes("event"))
+                {
+                  method = "get";
+                }
+
+                send(handle,requestBody, method, authToken);
+                return false;
+            }
+
+            function send(path, params, method, authToken)
+            {
+                var obj = new XMLHttpRequest();
+                obj.onreadystatechange = function()
+                {
+                    var response = obj.responseText;
+                    var responseJson = JSON.parse(response);
+                    if (responseJson.authToken) {
+                        document.getElementById("authToken").value = responseJson.authToken;
+                    }
+                    document.getElementById("response").value = formatJson(response);
+                };
+                obj.open(method,path,false);
+                obj.setRequestHeader("Content-Type", "application/json");
+                obj.setRequestHeader("Authorization", authToken);
+                obj.send(params);
+            }
+
+            function formatJson(inputText)
+            {
+                var temp = "";
+                var indent = 0;
+                for(var i in inputText)
+                {
+                    var char = inputText[i];
+                    if(char != null)
+                    {
+                        if(char === ']' || char === '}')
+                        {
+                            temp += "\n";
+                            indent--;
+                            for(var j = 0; j < indent; j++)
+                            {
+                                temp += '\t';
+                            }
+
+                        }
+
+                        temp += char;
+
+                        if (char === ',')
+                        {
+                            temp += "\n";
+
+                            for(j = 0; j < indent; j++)
+                            {
+                                temp += '\t';
+                            }
+
+                        }
+                        if(char === '{' || char === '[')
+                        {
+                            temp += "\n";
+                            indent++;
+                            for(j = 0; j < indent; j++)
+                            {
+                                temp += '\t';
+                            }
+                        }
+                    }
+                }
+
+                return temp;
+            }
+
+            function login()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/user/login";
+                document.getElementById("requestBox").value = formatJson("{\"userName\":\"username\",\"password\":\"password\"}");
+            }
+            function register()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/user/register";
+                document.getElementById("requestBox").value = formatJson("{\"userName\":\"username\",\"password\":\"password\"," +
+                    "\"email\":\"email\",\"firstName\":\"firstname\",\"lastName\":\"lastname\", \"gender\":\"m/f\"}");
+            }
+            function clear()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/clear/";
+                document.getElementById("requestBox").value = "";
+            }
+            function load()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/load/";
+                document.getElementById("requestBox").value = formatJson("{\"users\":[],\"persons\":[],\"events\":[]}");
+            }
+            function getAllEvents()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/event/";
+                document.getElementById("requestBox").value = "";
+            }
+            function getSingleEvent()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/event/[Replace_With_Event_ID]";
+                document.getElementById("requestBox").value = "";
+            }
+            function getAllPersons()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/person/";
+                document.getElementById("requestBox").value = "";
+            }
+            function getSinglePerson()
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById("handleBox").value = "/person/[Replace_With_Person_ID]";
+                document.getElementById("requestBox").value = "";
+            }
+            function fill(gen)
+            {
+                window.scrollTo(0,document.body.scrollHeight);
+                var api = "/fill/[Replace_With_User_Name]";
+                if(gen) api += "/{generations}";
+                document.getElementById("handleBox").value = api;
+                document.getElementById("requestBox").value = "";
+            }
+        </script>
+    </head>
+    <body>
+        <div style="text-align:center;">
+            <h1>
+                This is the Family Map server used to power the Family Map Android app.
+            </h1>
+            <h2>Built to power BYU CS 240 Family Map Application for Android</h2>
+        </div>
+        <div>
+            <h4>The web API that will be used is described below. Some of the APIs require a request body
+                 to be sent (namely "/user/login" and "/user/register"), while others require an Authorization authToken (received at login).
+                To view the JSON format required for "/user/login" and "/user/register" simply click on the link below and look in the request body.
+                To try out an API, click on its link below. It will fill the boxes below with the data to be sent with the request.
+                Edit the data as needed and click Submit.</h4>
+
+                <!-- Commands for the Database -->
+              <div style="border: 2px solid black;">
+                <h1 style="padding-left:1cm; text-decoration: underline;">Database Commands</h1>
+                <ul>
+                    <li>
+                      <a href="javascript:clear()" >/clear/</a> This API will clear ALL data from the database,
+                        including users and all generated data. This API can be run from a browser by simply
+                        typing it in the address bar or by clicking this link followed by pressing the Submit button below.
+                        No authorization authToken is required.
+                    </li>
+                    <li>
+                      <a href="javascript:load()">/load/</a> This API will load the server&apos;s database with
+                        data provided by json text in the response body. The json text must contain an array of users as
+                        defined in the register details in addition to a personID, an array of persons, and an array of events.
+                        WARNING: all data from the database is wiped when this is called. The json file will be specified in
+                        the body of the request. A example.json file is provided to get you started with loading specific data.
+                        No authorization authToken is required.
+                    </li>
+                    <li>
+                      <a href="javascript:fill()" >/fill/[username]</a> This API will fill the server&apos;s
+                        database with fake data for the specified user name. The "username" parameter is required
+                        and must be a user already registered with the server. It can be any user name you choose.
+                        If there is any data in the database associated with the given user name, it is erased.
+                        This API can be run from a browser by simply typing it in the address bar (or by pressing
+                        the link, filling in the details, and clicking submit). The base person generated should be a
+                        person representing the user.
+                        No authorization authToken is required.</li>
+                    <li>
+                      <a href="javascript:fill(true)" >/fill/[username]/{generations}</a> This API will fill the
+                        server&apos;s database with fake data for the specified user name. The "username" parameter
+                        is required and must be a user already registered with the server. All the ancestor data
+                        associated with this user is erased. This API can be run from a browser by simply
+                        typing it in the address bar (or by pressing the link, filling in the details, and clicking submit).
+                        The base person generated should be a person representing the user.
+                        No authorization authToken is required.</li>
+                  </ul>
+              </div>
+
+              <br/>
+
+              <div style="border: 2px solid black; margin:5px;">
+                  <h1 style="padding-left:1cm; text-decoration: underline;">User Commands</h1>
+                <ul>
+                  <li>
+                    <a href="javascript:login()" >/user/login</a> Use this to log in a user. A request body
+                      must be supplied specifying the username and password. If login succeeds, an authorization
+                      authToken will be returned. Use this authToken on other API calls that require authorization.
+                      The returned JSON object contains "Authorization" (the authorization authToken) and "username"
+                      (the username that was just logged in).
+                      No authorization authToken is required.
+                    </li>
+                  <li>
+                    <a href="javascript:register()" >/user/register</a> Use this to register a user.
+                      An authorization authToken is returned. Use it just as you would a authToken from login.
+                      Returns the same Json object as log in. It should be noted that when you register a
+                      user the database will automatically be filled.(Meaning you do not need to call the /fill API noted above).
+                      No authorization authToken is required.
+                  </li>
+                  <li>
+                    <a href="javascript:getAllEvents()">/event/</a> This API will return ALL events for ALL
+                      family members of the current user. The current user is determined from the provided
+                      authorization authToken (which is required for this call). The returned JSON object contains
+                      "data" which is an array of event objects.
+                      Authorization authToken is required.
+                  </li>
+                  <li>
+                    <a href="javascript:getSingleEvent()">/event/[eventID]</a> This API will return the single
+                      event with the specified ID. The event must belong to a relative of the user associated
+                      with the authorization authToken. The returned JSON contains the requested event object.
+                      Authorization authToken is required.
+                  </li>
+                  <li>
+                    <a href="javascript:getAllPersons()" >/person/</a> This API will return ALL people
+                      associated with the current user. The current user is determined from the provided a
+                      uthorization authToken (which is required for this call). The returned JSON object contains
+                      "data" which is an array of person objects.
+                      Authorization authToken is required.
+                  </li>
+                  <li>
+                    <a href="javascript:getSinglePerson()" >/person/[personID]</a> This API will return
+                      the single person with the specified ID. The person must be related to the user associated
+                      with the authorization authToken. The returned JSON contains the requested person object.
+                      Authorization authToken is required.
+                  </li>
+              </ul>
+            </div>
+        </div>
+        <div>
+            <h5>
+                A few notes:
+                <ul>
+                    <li>
+                        The authorization authToken is returned from the server in the "Authorization"
+                        attribute of the JSON object returned by the "/user/register" and "/user/login" APIs.
+                        The authorization authToken must be placed in the "Authorization" header
+                        on all subsequent HTTP requests.
+                    </li>
+                    <li>
+                        If something fails, the returned JSON object contains a "message" attribute
+                        which contains a message describing what happened.
+                        Watch for these as they will give helpful insight into why the server did not
+                        work as expected.
+                    </li>
+                </ul>
+            </h5>
+          <p>Try it out here</p>
+        </div>
+        <div class="w3-row forumDiv">
+            <div class="w3-col m4">
+              Handle:<input type="text" id="handleBox" name="handleBox" style="width: 400px">
+            </div>
+            <div class="w3-col m5">
+              Authorization authToken: <input type="text" id="authToken" name="authToken" style="width: 400px;">
+              <input type="button" name="Submit" value="Submit" onclick="submit()">
+            </div>
+        </div>
+        <div class="w3-row" style="margin:10px;">
+          <p class="w3-col w3-container center" style="width:3%"></p>
+          <div class="w3-col w3-container bottom" style="width:45%">
+            Request Body: <textarea id="requestBox" name="requestBox" class="requestBody"></textarea>
+          </div>
+          <p class="w3-col w3-container center" style="width:3%"></p>
+          <div class="w3-col w3-container bottom" style="width:45%">
+            Response From the server: <textarea id="response" class="responseBody" readonly></textarea>
+          <div>
+          <p class="w3-col w3-container center" style="width:3%"></p>
+        </div>
+          </div>
+        </div>
+    </body>
+</html>
