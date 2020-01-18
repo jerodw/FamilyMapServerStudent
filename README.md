@@ -1,4 +1,4 @@
-# FamilyMapSeverStudent
+# FamilyMapServerStudent
 Instructions:
 1.	Follow the instructions on github regarding how to clone this repository into a directory on your local machine.
 2.	Open IntelliJ.
