@@ -78,9 +78,9 @@ public class ServerTest {
 
     private static final Gson GSON;
 
-    private static String host;
+    private static String host = "localhost";
 
-    private static String port;
+    private static String port = "8080";
 
     private static boolean displayCurrentTest;
 
