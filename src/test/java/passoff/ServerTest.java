@@ -853,9 +853,9 @@ public class ServerTest {
         return stringBuilder.toString();
     }
 
-    private void assertHTTP_OK() { Assertions.assertEquals(Client.b(), 200, "Response code from server was not HTTP_OK"); }
+    private void assertHTTP_OK() { Assertions.assertEquals(200, Client.b(), "Response code from server was not HTTP_OK"); }
 
-    private void assertHTTP_BAD_REQUEST() { Assertions.assertEquals(Client.b(), 400, "Response code from server was not HTTP_BAD_REQUEST"); }
+    private void assertHTTP_BAD_REQUEST() { Assertions.assertEquals(400, Client.b(), "Response code from server was not HTTP_BAD_REQUEST"); }
 
     static  {
         InitLogs.init();
