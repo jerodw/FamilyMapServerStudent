@@ -80,7 +80,7 @@ public class ServerTest {
 
     private static String host = "localhost";
 
-    private static String port = "8081";
+    private static String port = "8080";
 
     private static boolean displayCurrentTest;
 
