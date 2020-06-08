@@ -116,19 +116,19 @@
             function clear()
             {
                 window.scrollTo(0,document.body.scrollHeight);
-                document.getElementById("handleBox").value = "/clear/";
+                document.getElementById("handleBox").value = "/clear";
                 document.getElementById("requestBox").value = "";
             }
             function load()
             {
                 window.scrollTo(0,document.body.scrollHeight);
-                document.getElementById("handleBox").value = "/load/";
+                document.getElementById("handleBox").value = "/load";
                 document.getElementById("requestBox").value = formatJson("{\"users\":[],\"persons\":[],\"events\":[]}");
             }
             function getAllEvents()
             {
                 window.scrollTo(0,document.body.scrollHeight);
-                document.getElementById("handleBox").value = "/event/";
+                document.getElementById("handleBox").value = "/event";
                 document.getElementById("requestBox").value = "";
             }
             function getSingleEvent()
@@ -140,7 +140,7 @@
             function getAllPersons()
             {
                 window.scrollTo(0,document.body.scrollHeight);
-                document.getElementById("handleBox").value = "/person/";
+                document.getElementById("handleBox").value = "/person";
                 document.getElementById("requestBox").value = "";
             }
             function getSinglePerson()
