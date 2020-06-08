@@ -178,13 +178,13 @@
                 <h1 style="padding-left:1cm; text-decoration: underline;">Database Commands</h1>
                 <ul>
                     <li>
-                      <a href="javascript:clear()" >/clear/</a> This API will clear ALL data from the database,
+                      <a href="javascript:clear()" >/clear</a> This API will clear ALL data from the database,
                         including users and all generated data. This API can be run from a browser by simply
                         typing it in the address bar or by clicking this link followed by pressing the Submit button below.
                         No authorization authToken is required.
                     </li>
                     <li>
-                      <a href="javascript:load()">/load/</a> This API will load the server&apos;s database with
+                      <a href="javascript:load()">/load2</a> This API will load the server&apos;s database with
                         data provided by json text in the response body. The json text must contain an array of users as
                         defined in the register details in addition to a personID, an array of persons, and an array of events.
                         WARNING: all data from the database is wiped when this is called. The json file will be specified in
@@ -245,7 +245,7 @@
                       Authorization authToken is required.
                   </li>
                   <li>
-                    <a href="javascript:getAllPersons()" >/person/</a> This API will return ALL people
+                    <a href="javascript:getAllPersons()" >/person</a> This API will return ALL people
                       associated with the current user. The current user is determined from the provided a
                       uthorization authToken (which is required for this call). The returned JSON object contains
                       "data" which is an array of person objects.
