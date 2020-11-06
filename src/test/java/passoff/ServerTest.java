@@ -92,19 +92,13 @@ public class ServerTest {
 
     private static final Gson GSON;
 
-    private static String host = "localhost";
+    private static final String host = "localhost";
 
-    private static String port = "8080";
+    private static final String port = "8080";
 
-    private static boolean displayCurrentTest;
+    private static final boolean displayCurrentTest;
 
     private Proxy proxy;
-
-    public static void setHost(String paramString) { host = paramString; }
-
-    public static void setPort(String paramString) { port = paramString; }
-
-    public static void setDisplayCurrentTest(boolean paramBoolean) { displayCurrentTest = paramBoolean; }
 
     /**
      * Attempts to make a connection to your server that you wrote
@@ -398,7 +392,7 @@ public class ServerTest {
     /**
      * Required API calls:
      * Register
-     * (partial) All Person
+     * (Partial) All Person
      */
     @Test
     @DisplayName("Persons Bad Auth Token Test")
@@ -460,28 +454,21 @@ public class ServerTest {
     }
 
     /**
-     * IT COULD BE POSSIBLE THAT WE ACTUALLY DON'T CHECK FOR AN INVALID AUTH TOKEN HERE
-     * BUT GET AN ERROR ONLY BECAUSE THE EVENT ID IS INVALID! //////////////////////////////////////////////
-     * Spoke to Spencer about it, but if the issue is not resolved I can do it as well.
-     * ///////////////////////////////////////////////////////////////////////////////////////
-     * Please remove this dangling javadoc before merging with the master branch.
-     * ////////////////////////////////////////////////////////////////////////////////////
-     */
-    /**
      * Required API calls:
-     * Register
+     * Load
      * (Partial) Event/[eventID]
      */
     @Test
     @DisplayName("Event Bad Auth Token Test")
     public void testBadAuthTokenEvent(TestInfo paramTestInfo) {
         printTestName(paramTestInfo);
+        //We are calling the load api using the data in "/passoffFiles/LoadData.json" as the request
+        load();
         try {
-            //We are calling the register api for a user named sheila
-            RegisterResult registerResult = this.proxy.b(host, port, registerRequest);
-            //We are calling the get single event api with an invalid eventID and authToken
-            //Here we could get an error for the eventID or the authToken...
-            EventResult eventResult = this.proxy.b(host, port, "bad auth", registerResult.e());
+
+            //We are calling the get single event api using the eventID variable "Sheila_Asteroids"
+            //However, here we are using an authToken that is not registered with this user
+            EventResult eventResult = this.proxy.b(host, port, "bad auth", ASTEROIDS1_EVENT_ID);
             //Trying to access an event with an unregistered authToken or eventID is invalid, so the headers sent should be HTTP_BAD_REQUEST (400)
             assertHTTP_BAD_REQUEST();
             //eventResult should be invalid, so the message variable should contain a non-null error string
@@ -1449,6 +1436,6 @@ public class ServerTest {
         MAX_REALISTIC_DEATH_AGE = 120;
         EMPTY_STRING = "";
         GSON = (new GsonBuilder()).setPrettyPrinting().create();
-        displayCurrentTest = false;
+        displayCurrentTest = true;
     }
 }
