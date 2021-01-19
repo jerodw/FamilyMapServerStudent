@@ -1,7 +1,7 @@
 {
    "users":[
       {
-         "userName":"sheila",
+         "username":"sheila",
          "password":"parker",
          "email":"sheila@parker.com",
          "firstName":"Sheila",
@@ -10,7 +10,7 @@
          "personID":"Sheila_Parker"
       },
       {
-         "userName":"patrick",
+         "username":"patrick",
          "password":"spencer",
          "email":"patrick@spencer.com",
          "firstName":"Patrick",
