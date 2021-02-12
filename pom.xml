@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.release>15</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
     <dependencies>
