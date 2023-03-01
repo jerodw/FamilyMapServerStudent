@@ -24,12 +24,12 @@ public class PersonDAO {
      * @param person the person object being added to the database
      */
     public void insert(Person person) throws DataAccessException{
-        String sql = "INSERT INTO Events (personID, AssociatedUsername, firstName, lastName, gender, " +
-                "fatherID, motherID, SpouseID) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Persons (PersonID, AssociatedUsername, FirstName, LastName, Gender, " +
+                "FatherID, MotherID, SpouseID) VALUES(?,?,?,?,?,?,?,?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            //Using the statements built-in set(type) functions we can pick the question mark we want
-            //to fill in and give it a proper value. The first argument corresponds to the first
-            //question mark found in our sql String
+            if (find(person.getPersonID()) != null) {
+                throw new DataAccessException("Error encountered while inserting an event into the database");
+            }
             stmt.setString(1, person.getPersonID());
             stmt.setString(2, person.getAssociatedUsername());
             stmt.setString(3, person.getFirstName());
@@ -89,7 +89,7 @@ public class PersonDAO {
      * wipes the person database clear
      */
     public void clear() throws DataAccessException {
-        String sql = "DELETE FROM Events";
+        String sql = "DELETE FROM Persons";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.executeUpdate();
         } catch (SQLException e) {

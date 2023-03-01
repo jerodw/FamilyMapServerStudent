@@ -67,7 +67,7 @@ public class PersonDAOTest {
     @Test
     public void findFail() throws DataAccessException {
         eDao.insert(bestPerson);
-        Person nullTest = eDao.find("nonexistent");
+        Person nullTest = eDao.find("ah");
         assertNull(nullTest);
     }
 
