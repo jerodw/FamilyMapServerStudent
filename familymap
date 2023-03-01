@@ -1,0 +1,36 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Authorization Token (Authtoken)" (
+	"authtoken"	TEXT NOT NULL,
+	"username"	TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS "Event" (
+	"eventID"	TEXT NOT NULL,
+	"associatedUsername"	TEXT NOT NULL,
+	"personID"	TEXT NOT NULL,
+	"latitude"	FLOAT NOT NULL,
+	"longitude"	FLOAT NOT NULL,
+	"country"	TEXT NOT NULL,
+	"city"	TEXT NOT NULL,
+	"eventType"	TEXT NOT NULL,
+	"year"	INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS "Person" (
+	"personID"	TEXT NOT NULL,
+	"associatedUsername"	TEXT NOT NULL,
+	"firstName"	TEXT NOT NULL,
+	"lastName"	TEXT NOT NULL,
+	"gender"	VARCHAR(1) NOT NULL,
+	"fatherID"	TEXT,
+	"motherID"	TEXT,
+	"spouseID"	TEXT
+);
+CREATE TABLE IF NOT EXISTS "User" (
+	"username"	TEXT NOT NULL,
+	"password"	TEXT NOT NULL,
+	"email"	TEXT NOT NULL,
+	"firstName"	TEXT NOT NULL,
+	"lastName"	TEXT NOT NULL,
+	"gender"	VARCHAR(1) NOT NULL,
+	"personID"	TEXT NOT NULL
+);
+COMMIT;

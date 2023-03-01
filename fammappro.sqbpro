@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="fammap.sqlite" readonly="0" foreign_keys="0" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2106"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Authorization Token (Authtoken)" custom_title="0" dock_id="1" table="4,31:mainAuthorization Token (Authtoken)"/><dock_state state="000000ff00000000fd000000010000000200000215000001fefc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000002150000011000ffffff000002150000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Authorization Token (Authtoken)" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="74"/><column index="2" value="71"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE &quot;Authorization Token (Authtoken)&quot; (
+	&quot;authtoken&quot;	TEXT NOT NULL,
+	&quot;username&quot;	TEXT NOT NULL
+);
+CREATE TABLE &quot;Event&quot; (
+	&quot;eventID&quot;	TEXT NOT NULL,
+	&quot;associatedUsername&quot;	TEXT NOT NULL,
+	&quot;personID&quot;	TEXT NOT NULL,
+	&quot;latitude&quot;	FLOAT NOT NULL,
+	&quot;longitude&quot;	FLOAT NOT NULL,
+	&quot;country&quot;	TEXT NOT NULL,
+	&quot;city&quot;	TEXT NOT NULL,
+	&quot;eventType&quot;	TEXT NOT NULL,
+	&quot;year&quot;	INTEGER NOT NULL
+);
+CREATE TABLE &quot;Person&quot; (
+	&quot;personID&quot;	TEXT NOT NULL,
+	&quot;associatedUsername&quot;	TEXT NOT NULL,
+	&quot;firstName&quot;	TEXT NOT NULL,
+	&quot;lastName&quot;	TEXT NOT NULL,
+	&quot;gender&quot;	VARCHAR(1) NOT NULL,
+	&quot;fatherID&quot;	TEXT,
+	&quot;motherID&quot;	TEXT,
+	&quot;spouseID&quot;	TEXT
+);
+CREATE TABLE &quot;User&quot; (
+	&quot;username&quot;	TEXT NOT NULL,
+	&quot;password&quot;	TEXT NOT NULL,
+	&quot;email&quot;	TEXT NOT NULL,
+	&quot;firstName&quot;	TEXT NOT NULL,
+	&quot;lastName&quot;	TEXT NOT NULL,
+	&quot;gender&quot;	VARCHAR(1) NOT NULL,
+	&quot;personID&quot;	TEXT NOT NULL
+);
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
